@@ -153,7 +153,7 @@ spec:
             path: /lib/modules
         - name: socket-dir
           hostPath:
-            path: /var/lib/kubelet/plugins/{{ .DriverNamePrefix }}rbd.csi.ceph.com
+            path: /var/vcap/data/kubelet/plugins/{{ .DriverNamePrefix }}rbd.csi.ceph.com
             type: DirectoryOrCreate
         - name: ceph-csi-config
           configMap:

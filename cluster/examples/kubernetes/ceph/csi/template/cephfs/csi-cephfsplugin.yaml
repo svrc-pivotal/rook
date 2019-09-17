@@ -24,7 +24,7 @@ spec:
           args:
             - "--v=5"
             - "--csi-address=/csi/csi.sock"
-            - "--kubelet-registration-path=/var/lib/kubelet/plugins/{{ .DriverNamePrefix }}cephfs.csi.ceph.com/csi.sock"
+            - "--kubelet-registration-path=/var/vcap/data/kubelet/plugins/{{ .DriverNamePrefix }}cephfs.csi.ceph.com/csi.sock"
           lifecycle:
             preStop:
               exec:
@@ -120,19 +120,19 @@ spec:
       volumes:
         - name: plugin-dir
           hostPath:
-            path: /var/lib/kubelet/plugins/{{ .DriverNamePrefix }}cephfs.csi.ceph.com/
+            path: /var/vcap/data/kubelet/plugins/{{ .DriverNamePrefix }}cephfs.csi.ceph.com/
             type: DirectoryOrCreate
         - name: csi-plugins-dir
           hostPath:
-            path: /var/lib/kubelet/plugins
+            path: /var/vcap/data/kubelet/plugins
             type: Directory
         - name: registration-dir
           hostPath:
-            path: /var/lib/kubelet/plugins_registry/
+            path: /var/vcap/data/kubelet/plugins_registry/
             type: Directory
         - name: pods-mount-dir
           hostPath:
-            path: /var/lib/kubelet/pods
+            path: /var/vcap/data/kubelet/pods
             type: Directory
         - name: host-sys
           hostPath:
